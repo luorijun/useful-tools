@@ -22,7 +22,7 @@ export default function Character2Image() {
   const [fontWeight, setFontWeight] = useState<FontWeight>('normal')
   const [fontStyle, setFontStyle] = useState<FontStyle>('normal')
 
-  const [imgCrop, setImgCrop] = useState<ImgCrop>('fixed')
+  const [imgCrop, setImgCrop] = useState<ImgCrop>('fit')
   const [imgAlign, setImgAlign] = useState<ImgAlign>('cc')
   const [imgBorder, setImgBorder] = useState(10)
 
