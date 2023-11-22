@@ -1,4 +1,4 @@
-import {useId, useState, useRef, FocusEvent, MouseEvent} from 'react'
+import {useId, useState, useRef, FocusEvent} from 'react'
 import {Field, FieldCoreProps} from '@/components/Field'
 
 type SelectOption<T> = {
@@ -87,7 +87,7 @@ export function Select<T extends string>(props: SelectProps<T>) {
           role={`listbox`}
           tabIndex={-1}
           className={`
-            absolute top-full left-0 right-0 mt-2
+            absolute top-full left-0 right-0 mt-2 z-50
             bg-white rounded-lg shadow-lg overflow-auto
             transition-all
             ${isExpanded ? 'opacity-100' : 'opacity-0 pointer-events-none'}

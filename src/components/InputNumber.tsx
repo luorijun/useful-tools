@@ -41,6 +41,9 @@ export function InputNumber(props: InputNumberProps) {
       <input
         type="number"
         placeholder={props.placeholder}
+        min={props.min}
+        max={props.max}
+        step={props.step}
         value={value}
         onChange={e => props.onChange?.(Number(e.target.value))}
         className={`
