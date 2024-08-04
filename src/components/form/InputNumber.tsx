@@ -1,14 +1,12 @@
-type InputNumberProps = {
-  label?: string
-  placeholder?: string
-  value?: number
+import {FieldNormalProps} from '@/components/form/Field'
+
+export type InputNumberProps = {
   min?: number
   max?: number
   step?: number
-  onChange?: (value: number) => void
   justify?: 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly'
   items?: 'start' | 'center' | 'end' | 'stretch' | 'baseline'
-}
+} & FieldNormalProps<number>
 
 export function InputNumber(props: InputNumberProps) {
   const value = props.value ?? 0
@@ -40,10 +38,7 @@ export function InputNumber(props: InputNumberProps) {
     >
       <input
         type="number"
-        placeholder={props.placeholder}
-        min={props.min}
-        max={props.max}
-        step={props.step}
+        placeholder={props.hint}
         value={value}
         onChange={e => props.onChange?.(Number(e.target.value))}
         className={`

@@ -1,9 +1,9 @@
 'use client'
-import {Page} from '@/components/Page'
-import {InputText} from '@/components/InputText'
 import {useEffect, useRef, useState} from 'react'
-import {InputNumber} from '@/components/InputNumber'
-import {Select} from '@/components/Select'
+import {Page} from '@/components/page/Page'
+import {InputText} from '@/components/form/InputText'
+import {InputNumber} from '@/components/form/InputNumber'
+import {Select} from '@/components/form/Select'
 import {Button} from '@/components/Button'
 
 type FontWeight = 'normal' | 'bold'
@@ -13,7 +13,7 @@ export default function Character2Image() {
   const canvas = useRef<HTMLCanvasElement>(null)
 
   const [character, setCharacter] = useState('🤭👉😭💔')
-  const [fontFamily, setFontFamily] = useState('serif')
+  const [fontFamily, setFontFamily] = useState('Segoe UI Emoji')
   const [fontSize, setFontSize] = useState(96)
   const [fontWeight, setFontWeight] = useState<FontWeight>('normal')
   const [fontStyle, setFontStyle] = useState<FontStyle>('normal')
@@ -102,36 +102,40 @@ export default function Character2Image() {
             <h4 className={`text-sm text-gray-500`}>字体设置</h4>
             <InputText
               readonly
+              name={`fontFamily`}
               label={`字体`}
-              placeholder={`输入字体`}
+              hint={`输入字体`}
               value={fontFamily}
-              onChange={setFontFamily}
+              onChange={str => setFontFamily(str ?? '')}
             />
             <InputNumber
+              name={`fontSize`}
               label={`字体大小`}
-              placeholder={`输入字体大小`}
+              hint={`输入字体大小`}
               value={fontSize}
-              onChange={setFontSize}
+              onChange={num => setFontSize(num ?? 16)}
             />
             <Select
               required
+              name={`fontWeight`}
               label={`字体粗细`}
               options={[
                 {label: '正常', value: 'normal'},
                 {label: '粗体', value: 'bold'},
               ]}
               value={fontWeight}
-              onChange={setFontWeight}
+              onChange={value => setFontWeight(value ?? 'normal')}
             />
             <Select
               required
+              name={`fontStyle`}
               label={`字体样式`}
               options={[
                 {label: '正常', value: 'normal'},
                 {label: '斜体', value: 'italic'},
               ]}
               value={fontStyle}
-              onChange={setFontStyle}
+              onChange={value => setFontStyle(value ?? 'normal')}
             />
           </div>
 
@@ -139,27 +143,31 @@ export default function Character2Image() {
             <h4 className={`text-sm text-gray-500`}>图片设置</h4>
             <InputNumber
               label={`宽度`}
-              placeholder={`输入宽度`}
+              name={`imgWidth`}
+              hint={`输入宽度`}
               value={imgSize.width}
-              onChange={v => setImgSize({...imgSize, width: v})}
+              onChange={v => setImgSize({...imgSize, width: v ?? 256})}
             />
             <InputNumber
               label={`高度`}
-              placeholder={`输入高度`}
+              name={`imgHeight`}
+              hint={`输入高度`}
               value={imgSize.height}
-              onChange={v => setImgSize({...imgSize, height: v})}
+              onChange={v => setImgSize({...imgSize, height: v ?? 256})}
             />
             <InputNumber
               label={`水平偏移`}
-              placeholder={`输入水平偏移`}
+              name={`imgPivotX`}
+              hint={`输入水平偏移`}
               value={imgPivot.x}
-              onChange={v => setImgPivot({...imgPivot, x: v})}
+              onChange={v => setImgPivot({...imgPivot, x: v ?? 0.5})}
             />
             <InputNumber
               label={`垂直偏移`}
-              placeholder={`输入垂直偏移`}
+              name={`imgPivotY`}
+              hint={`输入垂直偏移`}
               value={imgPivot.y}
-              onChange={v => setImgPivot({...imgPivot, y: v})}
+              onChange={v => setImgPivot({...imgPivot, y: v ?? 0.5})}
             />
           </div>
         </div>
@@ -169,9 +177,10 @@ export default function Character2Image() {
 
           <InputText
             label={`字符`}
-            placeholder={`输入任意字符`}
+            name={`character`}
+            hint={`输入字符`}
             value={character}
-            onChange={setCharacter}
+            onChange={str => setCharacter(str ?? '')}
           />
 
           <div className={`flex justify-center`}>

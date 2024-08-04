@@ -1,7 +1,9 @@
 import {ReactNode} from 'react'
 import type {Metadata} from 'next'
 import './globals.css'
-import {NavLink} from '@/app/_components/NavLink'
+import {NavBar, NavGroup} from '@/components/page/NavBar'
+import {NavItem} from '@/components/page/NavItem'
+import {NavTitle} from '@/components/page/NavTitle'
 
 export const metadata: Metadata = {
   title: 'Useful Tools!',
@@ -14,10 +16,18 @@ export default function RootLayout(props: {
   return (
     <html lang="zh-Hans">
       <body className={`w-screen h-screen flex`}>
-        <nav className={`flex-none basis-64 flex flex-col bg-gray-50 p-4 gap-2`}>
-          <NavLink href={`/`}>🏠 主页</NavLink>
-          <NavLink href={`/character2image`}>📷 字符转图像</NavLink>
-        </nav>
+
+        <NavBar>
+          <NavGroup>
+            <NavItem link={`/`}>🏠 主页</NavItem>
+            <NavItem link={`/character2image`}>📷 字符转图像</NavItem>
+
+            <NavTitle>文本处理</NavTitle>
+            <NavItem link={'/text-collect'}>📚 集合运算</NavItem>
+            <NavItem link={'/text-duplicate'}>🔁 文本去重</NavItem>
+            <NavItem link={'/text-diff'}>🔃 文本比较</NavItem>
+          </NavGroup>
+        </NavBar>
 
         {props.children}
       </body>

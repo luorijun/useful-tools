@@ -9,14 +9,13 @@ export function Section(props: {
   items?: 'start' | 'center' | 'end' | 'stretch' | 'baseline'
 }) {
 
-  const itemsClass = (() => {
-    if (props.items === 'start') return 'items-start'
-    if (props.items === 'center') return 'items-center'
-    if (props.items === 'end') return 'items-end'
-    if (props.items === 'stretch') return 'items-stretch'
-    if (props.items === 'baseline') return 'items-baseline'
-    return ''
-  })()
+  const itemsClass = {
+    start: 'items-start',
+    center: 'items-center',
+    end: 'items-end',
+    stretch: 'items-stretch',
+    baseline: 'items-baseline',
+  }[props.items || 'stretch']
 
   return (
     <section

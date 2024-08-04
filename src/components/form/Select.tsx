@@ -1,14 +1,14 @@
 import {useId, useState, useRef, FocusEvent} from 'react'
-import {Field, FieldCoreProps} from '@/components/Field'
+import {Field, FieldNormalProps} from '@/components/form/Field'
 
 type SelectOption<T> = {
   label: string
   value: T
 }
 
-type SelectProps<T> = FieldCoreProps<T> & {
+type SelectProps<T> = {
   options?: SelectOption<T>[]
-}
+} & FieldNormalProps<T>
 
 export function Select<T extends string>(props: SelectProps<T>) {
   const comboId = useId()
@@ -44,7 +44,7 @@ export function Select<T extends string>(props: SelectProps<T>) {
   }
 
   return (
-    <Field for={comboId} label={props.label} hint={props.hint}>
+    <Field<T, SelectProps<T>> for={comboId} props={props}>
       <div className={`relative w-fit`}>
 
         <input
@@ -56,7 +56,7 @@ export function Select<T extends string>(props: SelectProps<T>) {
           aria-controls={comboMenuId}
           aria-expanded={isExpanded}
           aria-owns={comboMenuId}
-          placeholder={props.placeholder || '请选择'}
+          placeholder={props.hint || '请选择'}
           value={selected ?? ''}
           onFocus={openSelect}
           onBlur={closeSelect}
@@ -98,6 +98,7 @@ export function Select<T extends string>(props: SelectProps<T>) {
               key={option.value}
               id={`${comboMenuId}-${index}`}
               role={`option`}
+              aria-selected={props.value === option.value}
               onClick={() => changeValue(option)}
               className={`
                 px-4 py-2
