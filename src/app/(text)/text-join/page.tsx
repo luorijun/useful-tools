@@ -10,6 +10,7 @@ export default function TextJoinPage(props: TextJoinPageProps) {
 
   const [textInput, setTextInput] = useState('')
   const [separator, setSeparator] = useState(',')
+  const [quote, setQuote] = useState('\'')
   const [textJoined, setTextJoined] = useState('')
 
   const joinText = () => {
@@ -18,7 +19,8 @@ export default function TextJoinPage(props: TextJoinPageProps) {
         .split('\n')
         .map(v => v.trim())
         .filter(v => v)
-        .join(separator)
+        .map(v => quote + v + quote)
+        .join(separator),
     )
   }
 
@@ -32,12 +34,20 @@ export default function TextJoinPage(props: TextJoinPageProps) {
           value={textInput}
           onChange={v => setTextInput(v || '')}
         />
-        <InputText
-          name={`separator`}
-          label={`分隔符`}
-          value={separator}
-          onChange={v => setSeparator(v || '')}
-        />
+        <div className={`flex gap-4`}>
+          <InputText
+            name={`separator`}
+            label={`分隔符号`}
+            value={separator}
+            onChange={v => setSeparator(v || '')}
+          />
+          <InputText
+            name={`quote`}
+            label={`包裹符号`}
+            value={quote}
+            onChange={v => setQuote(v || '')}
+          />
+        </div>
         <Button type={`primary`} onClick={joinText}>合并</Button>
         <InputText
           name={`textJoined`}
