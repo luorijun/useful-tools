@@ -26,6 +26,7 @@ export default function RootLayout(props: {
             <NavItem link={'/text-collect'}>📚 集合运算</NavItem>
             <NavItem link={'/text-duplicate'}>🔁 文本去重</NavItem>
             <NavItem link={'/text-diff'}>🔃 文本比较</NavItem>
+            <NavItem link={'/text-join'}>🔗 文本合并</NavItem>
           </NavGroup>
         </NavBar>
 

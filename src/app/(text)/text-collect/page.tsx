@@ -76,18 +76,21 @@ export default function TextCollect(props: TextCollectProps) {
             label={`并集（${unionCount} 行）`}
             multiline={10}
             value={union}
+            readonly
           />
           <InputText
             name={`intersection`}
             label={`交集（${intersectionCount} 行）`}
             multiline={10}
             value={intersection}
+            readonly
           />
           <InputText
             name={`difference`}
             label={`差集（${differenceCount} 行）`}
             multiline={10}
             value={difference}
+            readonly
           />
         </div>
       </div>

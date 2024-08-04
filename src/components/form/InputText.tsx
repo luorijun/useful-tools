@@ -21,7 +21,7 @@ export function InputText(props: InputTextProps) {
       value={props.value}
       onChange={e => props.onChange?.(e.target.value)}
       className={`
-        ${props.readonly ? 'bg-gray-300 cursor-not-allowed' : 'bg-gray-100'}
+        ${props.readonly ? 'bg-gray-100 cursor-not-allowed' : 'bg-gray-100'}
         px-4 py-2 rounded-lg
         outline-0 ring-2 ring-transparent hover:ring-indigo-200 focus:ring-indigo-500
         transition-all
