@@ -1,5 +1,5 @@
 'use client'
-import {ReactNode, useState} from 'react'
+import {ReactNode, useMemo, useState} from 'react'
 import {Page} from '@/components/page/Page'
 import {InputText} from '@/components/form/InputText'
 import {Button} from '@/components/Button'
@@ -13,15 +13,20 @@ export default function TextJoinPage(props: TextJoinPageProps) {
   const [quote, setQuote] = useState('\'')
   const [textJoined, setTextJoined] = useState('')
 
+  const textInputList = useMemo(() => {
+    return textInput
+      .split('\n')
+      .map(v => v.trim())
+      .filter(v => v)
+  }, [textInput])
+
   const joinText = () => {
-    setTextJoined(
-      textInput
-        .split('\n')
-        .map(v => v.trim())
-        .filter(v => v)
-        .map(v => quote + v + quote)
-        .join(separator),
-    )
+
+    const textJoined = textInputList
+      .map(v => `${quote}${v}${quote}`)
+      .join(separator)
+
+    setTextJoined(textJoined)
   }
 
   return (
@@ -29,7 +34,7 @@ export default function TextJoinPage(props: TextJoinPageProps) {
       <div className={`flex flex-col gap-8 py-8`}>
         <InputText
           name={`text`}
-          label={`文本`}
+          label={`文本（${textInputList.length} 行）`}
           multiline={10}
           value={textInput}
           onChange={v => setTextInput(v || '')}

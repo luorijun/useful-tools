@@ -1,5 +1,5 @@
 'use client'
-import {useState} from 'react'
+import {useMemo, useState} from 'react'
 import {Page} from '@/components/page/Page'
 import {InputText} from '@/components/form/InputText'
 import {Button} from '@/components/Button'
@@ -9,7 +9,22 @@ export type TextCollectProps = {}
 export default function TextCollect(props: TextCollectProps) {
 
   const [textA, setTextA] = useState('')
+  const setA = useMemo(() => {
+    return new Set(textA
+      .split('\n')
+      .map(v => v.trim())
+      .filter(v => v),
+    )
+  }, [textA])
+
   const [textB, setTextB] = useState('')
+  const setB = useMemo(() => {
+    return new Set(textB
+      .split('\n')
+      .map(v => v.trim())
+      .filter(v => v),
+    )
+  }, [textB])
 
   const [union, setUnion] = useState('')
   const [unionCount, setUnionCount] = useState(0)
@@ -21,8 +36,6 @@ export default function TextCollect(props: TextCollectProps) {
   const [differenceCount, setDifferenceCount] = useState(0)
 
   const calculate = () => {
-    const setA = new Set(textA.split('\n').map(v => v.trim()).filter(v => v))
-    const setB = new Set(textB.split('\n').map(v => v.trim()).filter(v => v))
     const union = new Set<string>([...setA, ...setB])
 
     const intersection = new Set<string>()
@@ -53,11 +66,15 @@ export default function TextCollect(props: TextCollectProps) {
         {/* 输入 */}
         <div className={`flex gap-4`}>
           <InputText
-            name={`text`} label={`文本一`} multiline={10}
+            name={`textA`}
+            label={`文本一（${setA.size} 行）`}
+            multiline={10}
             value={textA} onChange={v => setTextA(v || '')}
           />
           <InputText
-            name={`text`} label={`文本二`} multiline={10}
+            name={`textB`}
+            label={`文本二（${setB.size} 行）`}
+            multiline={10}
             value={textB} onChange={v => setTextB(v || '')}
           />
         </div>
