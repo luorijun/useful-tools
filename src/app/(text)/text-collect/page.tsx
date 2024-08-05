@@ -10,20 +10,18 @@ export default function TextCollect(props: TextCollectProps) {
 
   const [textA, setTextA] = useState('')
   const listA = useMemo(() => {
-    return new Set(textA
+    return textA
       .split('\n')
       .map(v => v.trim())
-      .filter(v => v),
-    )
+      .filter(v => v)
   }, [textA])
 
   const [textB, setTextB] = useState('')
   const listB = useMemo(() => {
-    return new Set(textB
+    return textB
       .split('\n')
       .map(v => v.trim())
-      .filter(v => v),
-    )
+      .filter(v => v)
   }, [textB])
 
   const [union, setUnion] = useState('')
@@ -69,13 +67,13 @@ export default function TextCollect(props: TextCollectProps) {
         <div className={`flex gap-4`}>
           <InputText
             name={`textA`}
-            label={`文本一（${listA.size} 行）`}
+            label={`文本一（${listA.length} 行）`}
             multiline={10}
             value={textA} onChange={v => setTextA(v || '')}
           />
           <InputText
             name={`textB`}
-            label={`文本二（${listB.size} 行）`}
+            label={`文本二（${listB.length} 行）`}
             multiline={10}
             value={textB} onChange={v => setTextB(v || '')}
           />
