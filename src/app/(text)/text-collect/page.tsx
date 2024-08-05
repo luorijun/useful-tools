@@ -9,7 +9,7 @@ export type TextCollectProps = {}
 export default function TextCollect(props: TextCollectProps) {
 
   const [textA, setTextA] = useState('')
-  const setA = useMemo(() => {
+  const listA = useMemo(() => {
     return new Set(textA
       .split('\n')
       .map(v => v.trim())
@@ -18,7 +18,7 @@ export default function TextCollect(props: TextCollectProps) {
   }, [textA])
 
   const [textB, setTextB] = useState('')
-  const setB = useMemo(() => {
+  const listB = useMemo(() => {
     return new Set(textB
       .split('\n')
       .map(v => v.trim())
@@ -36,7 +36,9 @@ export default function TextCollect(props: TextCollectProps) {
   const [differenceCount, setDifferenceCount] = useState(0)
 
   const calculate = () => {
-    const union = new Set<string>([...setA, ...setB])
+    const setA = new Set<string>(listA)
+    const setB = new Set<string>(listB)
+    const union = new Set<string>([...listA, ...listB])
 
     const intersection = new Set<string>()
     const difference = new Set<string>()
@@ -67,13 +69,13 @@ export default function TextCollect(props: TextCollectProps) {
         <div className={`flex gap-4`}>
           <InputText
             name={`textA`}
-            label={`文本一（${setA.size} 行）`}
+            label={`文本一（${listA.size} 行）`}
             multiline={10}
             value={textA} onChange={v => setTextA(v || '')}
           />
           <InputText
             name={`textB`}
-            label={`文本二（${setB.size} 行）`}
+            label={`文本二（${listB.size} 行）`}
             multiline={10}
             value={textB} onChange={v => setTextB(v || '')}
           />
