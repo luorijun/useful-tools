@@ -1,9 +1,9 @@
 import {ReactNode} from 'react'
 import type {Metadata} from 'next'
 import './globals.css'
-import {NavBar, NavGroup} from '@/components/page/NavBar'
-import {NavItem} from '@/components/page/NavItem'
-import {NavTitle} from '@/components/page/NavTitle'
+import {NavBar, NavGroup} from '@/app/_client/NavBar'
+import {NavItem} from '@/app/_client/NavItem'
+import {NavTitle} from '@/app/_client/NavTitle'
 
 export const metadata: Metadata = {
   title: 'Useful Tools!',
@@ -27,6 +27,14 @@ export default function RootLayout(props: {
             <NavItem link={'/text-duplicate'}>🔁 文本去重</NavItem>
             <NavItem link={'/text-diff'}>🔃 文本比较</NavItem>
             <NavItem link={'/text-join'}>🔗 文本合并</NavItem>
+
+            <NavTitle>编码转换</NavTitle>
+            <NavItem link={'/'}>unicode -&gt; utf8</NavItem>
+            <NavItem link={'/'}>url code -&gt; utf8</NavItem>
+            <NavItem link={'/'}>raw base64 -&gt; utf8</NavItem>
+            <NavItem link={'/'}>url base64 -&gt; utf8</NavItem>
+
+            <NavTitle>代码转换</NavTitle>
           </NavGroup>
         </NavBar>
 
