@@ -20,21 +20,17 @@ export default function RootLayout(props: {
         <NavBar>
           <NavGroup>
             <NavItem link={`/`}>🏠 主页</NavItem>
-            <NavItem link={`/character2image`}>📷 字符转图像</NavItem>
 
-            <NavTitle>文本处理</NavTitle>
+            <NavTitle>格式转换</NavTitle>
+            <NavItem link={`/character2image`}>📷 字符转图像</NavItem>
+            <NavItem link={`/time`}>⏰ 时间格式转换</NavItem>
+            <NavItem link={`/codec`}>🔐 编码转换（施工中）</NavItem>
+
+            <NavTitle>文本计算</NavTitle>
             <NavItem link={'/text-collect'}>📚 集合运算</NavItem>
             <NavItem link={'/text-duplicate'}>🔁 文本去重</NavItem>
             <NavItem link={'/text-diff'}>🔃 文本比较</NavItem>
             <NavItem link={'/text-join'}>🔗 文本合并</NavItem>
-
-            <NavTitle>编码转换</NavTitle>
-            <NavItem link={'/'}>unicode -&gt; utf8</NavItem>
-            <NavItem link={'/'}>url code -&gt; utf8</NavItem>
-            <NavItem link={'/'}>raw base64 -&gt; utf8</NavItem>
-            <NavItem link={'/'}>url base64 -&gt; utf8</NavItem>
-
-            <NavTitle>代码转换</NavTitle>
           </NavGroup>
         </NavBar>
 
