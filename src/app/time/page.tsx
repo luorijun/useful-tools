@@ -699,7 +699,7 @@ export default function TimePage(props: TimePageProps) {
               <ul className={`text-sm text-blue-700 space-y-1`}>
                 <li>• 粘贴多行时间数据，每行一个时间</li>
                 <li>• 系统会自动检测并启用批量模式</li>
-                <li>• 支持混合格式的自动识别（当输入格式为"自动检测"时）</li>
+                <li>• 支持混合格式的自动识别（当输入格式为&#34;自动检测&#34;时）</li>
                 <li>• 转换结果按行对应，便于对照检查</li>
                 <li>• 失败的行会显示错误信息，成功的行正常转换</li>
               </ul>

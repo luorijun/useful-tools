@@ -25,7 +25,7 @@ export function Message(rawProps: NoticeProps) {
     ...rawProps,
   }
 
-  let timeout = useRef<NodeJS.Timeout>()
+  let timeout = useRef<NodeJS.Timeout>(undefined)
   const [mounted, setMounted] = useState(false)
   useEffect(() => {
     setMounted(true)
