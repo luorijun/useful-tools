@@ -3,6 +3,7 @@ import {Field, FieldNormalProps} from '@/components/form/Field'
 
 type SelectOption<T> = {
   label: string
+  summary?: string
   value: T
 }
 
@@ -105,7 +106,10 @@ export function Select<T extends string>(props: SelectProps<T>) {
                 ${props.value === option.value ? 'bg-indigo-200 hover:bg-indigo-200' : 'hover:bg-indigo-50'}
               `}
             >
-              {option.label}
+              <span>{option.label}</span>
+              {option.summary && (
+                <span className={`text-gray-500 text-sm`}>{option.summary}</span>
+              )}
             </li>
           ))}
         </ul>
