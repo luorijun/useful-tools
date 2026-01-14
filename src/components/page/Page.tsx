@@ -1,41 +1,34 @@
-'use client'
-import {ReactNode, useEffect} from 'react'
-import {cn} from '@/utils/styles'
+"use client"
+import { type ReactNode, useEffect } from "react"
+import { cn } from "@/lib/styles"
 
 export type PageProps = {
-  title: string | ReactNode
-  children?: ReactNode
-  classNames?: {
-    header?: string
-    main?: string
-  }
+	title: ReactNode
+	children?: ReactNode
+	classNames?: {
+		header?: string
+		main?: string
+	}
 }
 
 export function Page(props: PageProps) {
-  useEffect(() => {
-    document.title = `${props.title} - Useful Tools!`
-  }, [])
+	useEffect(() => {
+		document.title = `${props.title} - Useful Tools!`
+	}, [props.title])
 
-  const title = typeof props.title === 'string' ? (
-    <h2 className={`text-2xl font-bold`}>{props.title}</h2>
-  ) : props.title
-
-  return (
-    <div className={`flex-auto flex flex-col border-l border-gray-200`}>
-      <header className={cn(
-        `flex-none basis-16 bg-white border-b border-gray-200 flex px-4 items-center`,
-        props.classNames?.header
-      )}>
-        {title}
-      </header>
-      <main className={`flex-auto bg-white flex justify-center`}>
-        <div className={cn(
-          `basis-[1000px]`,
-          props.classNames?.main
-        )}>
-          {props.children}
-        </div>
-      </main>
-    </div>
-  )
+	return (
+		<div className="flex-auto flex flex-col">
+			<header
+				className={cn(
+					`flex-none basis-16 bg-background border-b flex px-6 items-center`,
+					props.classNames?.header,
+				)}
+			>
+				<h2 className="text-xl">{props.title}</h2>
+			</header>
+			<main className={cn(`flex-auto px-6`, props.classNames?.main)}>
+				{props.children}
+			</main>
+		</div>
+	)
 }

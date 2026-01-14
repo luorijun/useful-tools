@@ -1,37 +1,39 @@
 {
-  "name": "tools",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev --turbo",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "clsx": "^2.1.1",
-    "date-fns": "^4.1.0",
-    "next": "15.3.3",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "tailwind-merge": "^3.3.1",
-    "zod": "^3.25.64"
-  },
-  "devDependencies": {
-    "@eslint/eslintrc": "^3.3.1",
-    "@next/eslint-plugin-next": "^15.4.6",
-    "@stylistic/eslint-plugin": "^5.2.3",
-    "@tailwindcss/postcss": "^4.1.10",
-    "@types/node": "^22.14.0",
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
-    "autoprefixer": "^10.4.21",
-    "eslint": "^9.28.0",
-    "eslint-config-next": "15.3.3",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "postcss": "^8.5.5",
-    "tailwindcss": "^4.1.10",
-    "typescript": "^5.8.3"
-  },
-  "packageManager": "pnpm@10.9.0+sha512.0486e394640d3c1fb3c9d43d49cf92879ff74f8516959c235308f5a8f62e2e19528a65cdc2a3058f587cde71eba3d5b56327c8c33a97e4c4051ca48a10ca2d5f"
+	"name": "tools",
+	"version": "0.2.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev --turbo",
+		"build": "next build",
+		"start": "next start",
+		"lint": "biome check --write"
+	},
+	"dependencies": {
+		"@base-ui/react": "^1.0.0",
+		"class-variance-authority": "^0.7.1",
+		"clsx": "^2.1.1",
+		"date-fns": "^4.1.0",
+		"lucide-react": "^0.562.0",
+		"next": "^16.1.1",
+		"react": "^19.2.3",
+		"react-dom": "^19.2.3",
+		"tailwind-merge": "^3.4.0",
+		"zod": "^3.25.64"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.3.11",
+		"@eslint/eslintrc": "^3.3.1",
+		"@stylistic/eslint-plugin": "^5.2.3",
+		"@tailwindcss/postcss": "^4.1.10",
+		"@types/node": "^22.14.0",
+		"@types/react": "^19.1.8",
+		"@types/react-dom": "^19.1.6",
+		"babel-plugin-react-compiler": "^1.0.0",
+		"eslint": "^9.28.0",
+		"eslint-config-next": "15.3.3",
+		"postcss": "^8.5.5",
+		"tailwindcss": "^4.1.10",
+		"tw-animate-css": "^1.4.0",
+		"typescript": "^5.8.3"
+	}
 }

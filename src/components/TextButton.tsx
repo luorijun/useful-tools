@@ -1,17 +1,18 @@
-import {ReactNode} from 'react'
+import type { ReactNode } from "react"
 
 export function TextButton(props: {
-  onClick?: () => void
-  children?: ReactNode
+	onClick?: () => void
+	children?: ReactNode
 }) {
-  return (
-    <button
-      onClick={props.onClick}
-      className={`
+	return (
+		<button
+			type="button"
+			onClick={props.onClick}
+			className={`
         text-indigo-500 hover:underline
       `}
-    >
-      {props.children}
-    </button>
-  )
+		>
+			{props.children}
+		</button>
+	)
 }
